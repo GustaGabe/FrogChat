@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router";
-import { Home } from "./pages/home";
+import { Home } from "./pages/home/home";
 import { NotFound } from "./components/notfound/noutfound";
 import { LoginPage } from "./pages/login/login.page";
 
