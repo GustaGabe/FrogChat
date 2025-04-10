@@ -1,0 +1,25 @@
+.NotFound {
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 90vh;
+    }
+
+    &__error {
+        font-size: 100px;
+        font-weight: 700;
+        color: #44e74d;
+        line-height: 1;
+    }
+    
+    &__message {
+        font-size: 35px;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #b1bcb2;
+        max-width: 700px;
+        text-align: center;
+    }
+}
