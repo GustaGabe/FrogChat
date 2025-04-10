@@ -1,0 +1,48 @@
+.LoginPage {
+    &__container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+
+    &__user {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: 24px;
+        color: white;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: #59e866;
+    }
+
+    &__button {
+        background-color: #59e866;
+        border: none;
+        padding: 20px 30px;
+        font-size: 30px;
+        color: #ffffff;
+        border-radius: 10px;
+    
+          &:hover {
+            cursor: pointer;
+            background-color: #59e830;
+          }
+    }
+
+    &__input {
+        border: 2px solid #59e866;
+        padding: 20px 30px;
+        font-size: 30px;
+        color: #ffffff;
+        border-radius: 10px;
+        color: #c0c5c1;
+        margin-top: 20px;
+        &:focus {
+            outline: none;
+            border-color: #59e830;
+        }
+    }
+}
