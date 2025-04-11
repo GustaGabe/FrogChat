@@ -9,38 +9,37 @@ const socket = io('http://localhost:3000')
 export const Home: React.FC = () => {
   const [ message, setMessage ] = useState<string>('')
   const [ chat, setChat ] = useState<string[]>([])
-  const [user, setUser] = useState<string>('')
   const navigate = useNavigate()
-
+  const storedUser = window.localStorage.getItem('user');
   useEffect(() => {
     socket.on('chat message', (msg) => {
       setChat((prev: any) => [...prev, msg]);
     })
-    const storedUser = window.localStorage.getItem('user');
-
     if (!storedUser) {
       navigate('/login');
     }
 
-    setUser(storedUser || '')
-  
     return () => {
       socket.off('chat message');
     };
-  }, [user]);
+  }, [storedUser]);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    socket.emit('chat message', message);
+    socket.emit('chat message', {
+      username: storedUser,
+      message: message
+    })
     setMessage('');
+    
   }
 
   return(
     <div className='HomePage__container'>
-      <ul className='HomePage__messages'>
+      <ul className={`HomePage__messages`}>
         {chat.map((msg, index) => (
-          <li key={index} className='HomePage__message'>
-            {`${user}: ${msg}`}
+          <li key={index} className={`HomePage__message ${msg.username === storedUser ? 'HomePage__message--right' : 'HomePage__message--left'}`}>
+            {`${msg.username}: ${msg.message}`}
           </li>
         ))}
       </ul>
